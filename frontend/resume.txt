@@ -1,0 +1,118 @@
+# Adil Hasan
+
+**Software Developer | React.js | JavaScript | VB6 | Tailwind CSS**
+
+Delhi, India
+Phone: XXXXXXXXXXX
+Email: [Adil70095@gmail.com](mailto:Adil70095@gmail.com)
+LinkedIn: To be added
+GitHub: To be added
+
+## Professional Summary
+
+Software Developer with approximately 4 years of professional experience, including ERP software development using Microsoft VB6 and database development with SQL Server and Oracle. Started my career as an ERP/Tally operator and transitioned into software development through self-learning and practical experience.
+
+Currently developing modern web applications using JavaScript and React.js, with hands-on experience in React Hooks, Context API, React Router, dynamic routing, API integration, forms, state management and responsive UI development using Tailwind CSS.
+
+## Technical Skills
+
+### Frontend Development
+
+* HTML5
+* CSS3
+* JavaScript (ES6+)
+* React.js
+* React Hooks (`useState`, `useEffect`, `useContext`)
+* Context API
+* React Router
+* Dynamic Routing
+* REST API Integration / Fetch
+* Forms & Form Handling
+* State Management
+* Responsive Web Design
+* Tailwind CSS
+* Framer Motion
+
+### Software Development
+
+* Microsoft VB6
+* ERP Software Development
+* Application Development
+* Debugging & Maintenance
+* Business Logic Implementation
+
+### Databases
+
+* SQL Server
+* Oracle
+
+### Tools
+
+* Visual Studio Code
+* Git / GitHub — To be added
+
+## Professional Experience
+
+### Software Developer — Softcore Infotech Pvt. Ltd.
+
+**2025 – Present**
+
+* Develop and maintain ERP software applications using Microsoft VB6.
+* Implement software enhancements according to business requirements.
+* Debug and resolve application issues.
+* Work with SQL Server and Oracle databases.
+* Implement business logic and database-driven functionality.
+* Maintain and improve existing ERP application modules.
+
+### ERP / Tally Operator — Batra Garments
+
+**2023 – 2025**
+
+* Worked with ERP software for day-to-day business operations.
+* Handled ERP and Tally-based data and business processes.
+* Worked with operational and data-entry workflows.
+* Developed practical understanding of business requirements and software-based processes.
+* Started learning programming and transitioned into professional software development.
+
+## Projects
+
+### E-Commerce Website — React.js & Tailwind CSS
+
+A responsive e-commerce web application developed to implement modern React concepts and create a practical online shopping experience.
+
+**Technologies:** React.js, JavaScript, Tailwind CSS, React Router, Context API, REST APIs, Framer Motion
+
+**Key Features:**
+
+* Developed reusable React components for different sections of the application.
+* Created responsive UI using Tailwind CSS.
+* Implemented product listing and reusable product cards.
+* Implemented dynamic product details pages using React Router.
+* Used URL parameters with `useParams()` to identify selected products.
+* Used Context API for sharing product and application data.
+* Implemented React state management using `useState`.
+* Used `useEffect` for handling side effects and data-related operations.
+* Integrated APIs using Fetch.
+* Implemented forms and form handling.
+* Implemented cart functionality and product-related state management.
+* Added animations and scroll-based effects using Framer Motion.
+* Created responsive layouts for mobile, tablet and desktop screens.
+
+## Education
+
+### Bachelor of Commerce (B.Com)
+
+**University of Delhi (DU)**
+**2019**
+
+## Career Objective
+
+Looking to transition into a modern React.js / Frontend Development role where I can combine my existing professional software development experience with my hands-on knowledge of JavaScript, React.js and modern frontend technologies.
+
+## Additional Information
+
+* Professional Experience: Approximately 4 years
+* Current Role: Software Developer
+* Current Location: Delhi, India
+* LinkedIn: To be added
+* GitHub: To be added

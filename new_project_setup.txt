@@ -1,0 +1,49 @@
+
+# How to create a new project in react all steps with vite
+
+fisrt if you already create folder and wants to create project in same folder 
+
+npm create vite@latest . (dot means same folder) otherwise
+
+npm create vite@latest my-project (or any name)
+
+then select variants react,javascript,eslint 
+
+....................................................................................................
+
+# How to create a new backend FOR YOUR project step
+
+ npm init  (first command ) then  give  some answer or if you want to skip questions run
+
+ npm init -y
+
+# then run command 
+npm install express
+
+# then third command 
+
+npm install mongoose
+
+ye main command s hai fir uske baad project ke according
+
+# then forth command (for authentication)
+
+npm install jsonwebtoken
+
+# then fifth command (for photo upload means admin panel)
+
+npm install multer
+
+# then sixth command (kuch change krne ke baad save kro to run time pr refresh ho jata hai otherwise close krke dobara run kro)
+
+npm i -d nodemon  (ye current project ke liye)
+
+npm i -g nodemon (ye ek baar chla lo fir kitne bhi project bnao sabhi me work krega)
+
+# how to check ki nodemon hai ya nahin
+
+nodemon --version (agar aa gaya no need to install)
+
+
+
+
