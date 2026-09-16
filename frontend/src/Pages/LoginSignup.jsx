@@ -3,6 +3,87 @@ import React, { useState } from 'react'
 const LoginSignup = () => {
 
 const [isLogin,setIsLogin] = useState(true)
+const[formData,setFormData] = useState({
+   name:"",
+   email:"",
+   password:"",
+   confirmPassword: ""
+})
+
+const changeHandler= (e)=>{
+   setFormData({...formData,[e.target.name]:e.target.value})
+}
+
+const login = async (e)=>{
+  e.preventDefault()
+  console.log("login button pressed",formData)
+
+  let response = await fetch('http://localhost:5000/api/auth/login',{
+    method:"POST",
+    headers:  {
+      'Content-Type':'application/json',  
+    },
+      body:JSON.stringify(formData)
+  })
+
+    let data  = await response.json();
+    console.log(data)
+
+    if (response.ok){
+      localStorage.setItem('auth-Token',data.authToken)
+      window.location.replace('/')
+    }
+    else{
+      if (data.errors){
+        console.log(data.errors)
+        alert(data.errors[0].msg)
+      }
+      else{
+          alert(data.message)
+      }
+
+    }
+}
+
+// api use for signup function
+
+const signUP= async (e)=>{
+  e.preventDefault()
+  console.log("signup button pressed",formData)
+
+  try {
+    let response = await fetch('http://localhost:5000/api/auth/createuser',{
+      method:"POST",
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(formData)
+    })
+
+    let data = await response.json()
+    if(response.ok){
+      localStorage.setItem('auth-Token',data.authToken)
+      window.location.replace('/')
+    }
+    else{
+      if (data.errors){
+          alert(data.errors[0].msg)
+
+      }
+      else{
+        alert(data.message || "Signup Failed" )
+      }
+    }
+
+    
+  } catch (error) {
+    console.log("signup Error",error)
+    alert("Something Went Wrong. Please Try again")
+
+  }
+ 
+}
+
 
   return (
     <>
@@ -24,7 +105,10 @@ const [isLogin,setIsLogin] = useState(true)
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form 
+        onSubmit={isLogin? login: signUP} 
+        className="space-y-5">
+        {console.log(isLogin)}
 
           {/* Name - Signup only */}
           {!isLogin && (
@@ -34,7 +118,7 @@ const [isLogin,setIsLogin] = useState(true)
               </label>
 
               <input
-                type="text"
+                type="text" name='name' value={formData.name} onChange={changeHandler}
                 placeholder="Enter your name"
                 className="w-full h-12 px-4 border border-gray-300 rounded-xl
                 outline-none focus:border-[#c4a96e] transition"
@@ -49,7 +133,7 @@ const [isLogin,setIsLogin] = useState(true)
             </label>
 
             <input
-              type="email"
+              type="email" name='email' value={formData.email} onChange={changeHandler}
               placeholder="Enter your email"
               className="w-full h-12 px-4 border border-gray-300 rounded-xl
               outline-none focus:border-[#c4a96e] transition"
@@ -63,7 +147,7 @@ const [isLogin,setIsLogin] = useState(true)
             </label>
 
             <input
-              type="password"
+              type="password" name='password' value={formData.password} onChange={changeHandler}
               placeholder="Enter your password"
               className="w-full h-12 px-4 border border-gray-300 rounded-xl
               outline-none focus:border-[#c4a96e] transition"
@@ -78,7 +162,7 @@ const [isLogin,setIsLogin] = useState(true)
               </label>
 
               <input
-                type="password"
+                type="password" name='confirmPassword' value={formData.confirmPassword} onChange={changeHandler}
                 placeholder="Confirm your password"
                 className="w-full h-12 px-4 border border-gray-300 rounded-xl
                 outline-none focus:border-[#c4a96e] transition"
@@ -100,10 +184,11 @@ const [isLogin,setIsLogin] = useState(true)
 
           {/* Submit */}
           <button
-            type="submit"
+         
             className="w-full h-12 bg-[#c4a96e] text-white
             rounded-xl font-semibold hover:bg-[#3d3530]
             transition duration-300"
+           
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>

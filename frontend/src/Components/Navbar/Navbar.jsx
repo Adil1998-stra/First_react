@@ -9,6 +9,9 @@ const Navbar = () => {
   const[menu,setMenu] = useState("Home")
   const [mobileMenu, setMobileMenu] = useState(false)
   const{cartItem} = useContext(ShopContext)
+  const [authToken, setAuthToken] = useState(
+  localStorage.getItem('auth-Token')
+);
   console.log(cartItem)
 
   const totalCartItems = Object.values(cartItem).reduce(
@@ -44,11 +47,18 @@ const Navbar = () => {
                 <Link to='/Cart'><img className='size-8 cursor-pointer ' src={Cart} alt="" /></Link>           
                 
            </div>
+            {authToken ? 
+            <button className="hidden md:block cursor-pointer mr-9 md:w-25 md:text-sm lg:w-40 lg:font-medium h-10 mt-5  border-2 border-[#c4a96e]
+             rounded-3xl text-[#c4a96e] hover:text-white  hover:bg-[#b39458]
+             transition duration-300" onClick={()=>{localStorage.removeItem('auth-Token'); setAuthToken(null); window.location.Replace('/')}}>
+            Logout
+            </button> :
            <Link to='/Login/Signup' ><button className="hidden md:block cursor-pointer mr-9 md:w-25 md:text-sm lg:w-40 lg:font-medium h-10 mt-5  border-2 border-[#c4a96e]
              rounded-3xl text-[#c4a96e] hover:text-white  hover:bg-[#b39458]
              transition duration-300">
             Login/Signup
-            </button></Link>  
+            </button></Link>  }
+
              <button
                   onClick={() => setMobileMenu(!mobileMenu)}
                   className="md:hidden text-[#c4a96e] text-3xl cursor-pointer"

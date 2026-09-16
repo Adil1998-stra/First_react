@@ -14,10 +14,10 @@ app.use(cors())
 app.use('/Images', express.static('Upload/Images'));
 
 
-
 app.use('/api/auth',authRoutes)
 app.use('/api/Product',productRoutes)
 app.use('/api/cart',cartRoutes)
+
 
 
 app.get('/',(req,res)=>{

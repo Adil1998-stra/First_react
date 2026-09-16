@@ -50,8 +50,16 @@ router.post('/createuser',[
         // });
 
 // Alternative of above code
+        const data = {
+            user :{
+                id :user.id
+            }
+        }
+
+         const authToken = jwt.sign(data,JWT_SECRET)
 
         return res.status(201).json({
+        authToken,
         message: "User created successfully"
         });
         

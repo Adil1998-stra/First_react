@@ -29,7 +29,7 @@ const upload = multer({
 
 router.post('/upload',upload.single('product'),(req,res)=>{
         res.json({
-            sucsess:true,
+            success:true,
             image_url:`http://localhost:5000/Images/${req.file.filename}`
         })
 })
@@ -116,4 +116,4 @@ router.get('/getallproduct',async (req,res)=>{
         
 })
 
-module.exports =router
+module.exports = router

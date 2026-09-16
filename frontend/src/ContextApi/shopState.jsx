@@ -8,11 +8,15 @@ const ShopState = (props) => {
 const [product,setAllProduct] = useState(all_product)
 const [cartItem,setCartItem] = useState({})
 
+
+
 const addToCart = (itemId,cquantity)=>{
   setCartItem((prev)=>({
     ...prev,
     [itemId]:(prev[itemId] || 0) + cquantity }));
 };
+
+
 
 const removeToCart = (itemId,cquantity)=>{
   setCartItem((prev)=>({

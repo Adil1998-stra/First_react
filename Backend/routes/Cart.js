@@ -128,7 +128,7 @@ router.post('/removefromcart',fetchuser,async(req,res)=>{
 
 // api for getting all cart of user
 
-app.get('/getcart',fetchuser,async (req,res)=>{
+router.post('/getcart',fetchuser,async (req,res)=>{
     
     try {
 
