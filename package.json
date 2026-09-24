@@ -1,0 +1,27 @@
+{
+  "name": "samweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "npm run dev --prefix frontend",
+    "backend":  "cd backend && npx nodemon index.js",
+    "both"   : "concurrently \"npm run frontend\" \"npm run backend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adil1998-stra/First_react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Adil1998-stra/First_react/issues"
+  },
+  
+  "homepage": "https://github.com/Adil1998-stra/First_react#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

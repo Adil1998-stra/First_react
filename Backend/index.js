@@ -4,14 +4,18 @@ const connectToMongo = require('./db')
 const authRoutes = require('./routes/Auth')
 const productRoutes = require('./routes/Product')
 const cartRoutes = require('./routes/Cart')
+const path = require('path');
 
 connectToMongo();
 const app = express()
 const port = 5000
 
-app.use(express.json());
 app.use(cors())
-app.use('/Images', express.static('Upload/Images'));
+app.use(express.json()); 
+// app.use('/Images',express.static('Upload/Images'));
+
+
+app.use('/Images', express.static(path.join(__dirname, 'Upload/Images')));
 
 
 app.use('/api/auth',authRoutes)

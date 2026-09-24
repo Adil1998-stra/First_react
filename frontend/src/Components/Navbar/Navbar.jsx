@@ -8,16 +8,23 @@ import ShopContext from '../../ContextApi/shopContext';
 const Navbar = () => {
   const[menu,setMenu] = useState("Home")
   const [mobileMenu, setMobileMenu] = useState(false)
-  const{cartItem} = useContext(ShopContext)
+  const{cartItem,setCartItem} = useContext(ShopContext)
   const [authToken, setAuthToken] = useState(
   localStorage.getItem('auth-Token')
 );
   console.log(cartItem)
 
-  const totalCartItems = Object.values(cartItem).reduce(
-  (total, quantity) => total + quantity,
+  const totalCartItems = cartItem.reduce(
+  (total, item) => total + item.quantity,
   0
 );
+
+const logout = ()=>{
+localStorage.removeItem('auth-Token'); 
+setAuthToken(null); 
+window.location.replace('/'); 
+setCartItem([]) 
+}
 
   return (
     <>
@@ -50,7 +57,7 @@ const Navbar = () => {
             {authToken ? 
             <button className="hidden md:block cursor-pointer mr-9 md:w-25 md:text-sm lg:w-40 lg:font-medium h-10 mt-5  border-2 border-[#c4a96e]
              rounded-3xl text-[#c4a96e] hover:text-white  hover:bg-[#b39458]
-             transition duration-300" onClick={()=>{localStorage.removeItem('auth-Token'); setAuthToken(null); window.location.Replace('/')}}>
+             transition duration-300" onClick={logout}>
             Logout
             </button> :
            <Link to='/Login/Signup' ><button className="hidden md:block cursor-pointer mr-9 md:w-25 md:text-sm lg:w-40 lg:font-medium h-10 mt-5  border-2 border-[#c4a96e]
@@ -80,7 +87,7 @@ const Navbar = () => {
                     setMobileMenu(false);
                   }}
                 >
-                  <Link to="/Home">
+                  <Link to="/">
                     Home
                   </Link>
                 </li>
@@ -127,6 +134,19 @@ const Navbar = () => {
 
                 {/* Mobile Login */}
                 <li>
+                  {authToken ? 
+                   <button
+                      onClick={logout}
+                      className="w-40 h-10 
+                      border-2 border-[#c4a96e]
+                      rounded-3xl text-[#c4a96e]
+                      hover:text-white
+                      hover:bg-[#b39458]
+                      transition duration-300"
+                    >
+                      Logout
+                    </button>
+                    :
                   <Link to="/Login/Signup">
                     <button
                       onClick={() => setMobileMenu(false)}
@@ -139,7 +159,7 @@ const Navbar = () => {
                     >
                       Login/Signup
                     </button>
-                  </Link>
+                  </Link>}
                 </li>
 
 

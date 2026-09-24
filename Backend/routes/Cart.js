@@ -10,8 +10,10 @@ const router = express.Router();
 router.post('/addtocart',fetchuser,async (req,res)=>{
 try {
     
-    const{productId} = req.body;
+    const{productId,quantity} = req.body;
+
     const product = await Product.findById({_id:productId})
+
     if(!product){
         return res.status(400).json({
             success : false,
@@ -40,12 +42,12 @@ try {
 
 
     if (cartItem){
-        cartItem.quantity +=1
+        cartItem.quantity += Number(quantity)
     }
     else{
         userData.cart.push({
             product : productId,
-            quantity : 1
+            quantity : Number(quantity)
         });
     }
        await userData.save()
@@ -62,14 +64,12 @@ try {
         success:false,
         message:"server error",
         error:error.message
-    })
-    
+    })   
 }
-
 })
 
-// Api for Remove product from cart
 
+// Api for Remove product from cart
 router.post('/removefromcart',fetchuser,async(req,res)=>{
 
     try {
@@ -91,25 +91,26 @@ router.post('/removefromcart',fetchuser,async(req,res)=>{
             })
         }
     
-        const cartItem = userData.cart.find((item)=>{
+        // const cartItem = userData.cart.find((item)=>{
                 
-                return item.product.toString()===productId
-        })
+        //         return item.product.toString()===productId
+        // })
 
 
-        if (cartItem.quantity > 1) {
-            cartItem.quantity -= 1;
-        } else {
+        // if (cartItem.quantity > 1) {
+        //     cartItem.quantity = 0;
+        // } else {
             userData.cart = userData.cart.filter(
                 item => item.product.toString() !== productId
             );
-        }
+        // }
         
         await userData.save()
 
         return res.status(200).json({
             success : true,
-            message:"Item Removed From Cart"
+            message:"Item Removed From Cart",
+            cart : userData.cart
         })
 
 

@@ -6,6 +6,9 @@ import { useContext } from 'react'
 const CartItem = () => {
 const {product,cartItem,removeToCart,getTotalAmt} = useContext(ShopContext)
 
+
+
+
   return (
     <>
         <div className="mt-25">
@@ -19,12 +22,17 @@ const {product,cartItem,removeToCart,getTotalAmt} = useContext(ShopContext)
                 <p className="text-center">Remove</p>
                 
             </div>
-               
+       
 
             {/* Cart Item */}
             {product.map((e)=>{
-                    if (cartItem[Number(e.id)]>0){
-                    return (<React.Fragment key={e.id}>
+
+                const cartdata = cartItem.find(
+                  (item)=> item.product === e._id
+                );
+                if(!cartdata) return null
+                   
+                    return (<React.Fragment key={e._id}>
                     {/* ---------------Desktop UI--------------- */}
                     <div className="hidden md:max-w-7xl md:mx-auto md:grid mb-30 grid-cols-6 items-center gap-4 px-6 py-5 border-b border-gray-200">
                 {/* Product Image */}
@@ -33,9 +41,9 @@ const {product,cartItem,removeToCart,getTotalAmt} = useContext(ShopContext)
                                 </div>
                                 <p className='text-gray-800 md:font-medium mr-4'>{e.name}</p>
                                 <p className='text-gray-700'>₹{e.new_price}</p>
-                                <p className='ml-6 text-gray-700'>{cartItem[e.id]}</p>
-                                <p className='text-gray-700'>₹{e.new_price * cartItem[e.id]}</p>
-                                <button onClick={()=>{removeToCart(e.id,cartItem[e.id])}} className='flex justify-center cursor-pointer'><img src={Remove} alt="" /> </button>
+                                <p className='ml-6 text-gray-700'>{cartdata.quantity}</p>
+                                <p className='text-gray-700'>₹{e.new_price * cartdata.quantity}</p>
+                                <button onClick={()=>{removeToCart(e._id,cartItem[e._id])}} className='flex justify-center cursor-pointer'><img src={Remove} alt="" /> </button>
                     </div>
 
 
@@ -51,7 +59,7 @@ const {product,cartItem,removeToCart,getTotalAmt} = useContext(ShopContext)
                             <p className="text-gray-600 mt-1">₹{e.new_price}</p>
                         </div>
                             {/* Remove */}
-                            <button onClick={()=>{removeToCart(e.id)}}  ><img src={Remove} alt="Remove" className="w-4 h-4"/></button>
+                            <button onClick={()=>{removeToCart(e._id)}}  ><img src={Remove} alt="Remove" className="w-4 h-4"/></button>
                     </div>
 
             {/* Quantity */}
@@ -59,20 +67,20 @@ const {product,cartItem,removeToCart,getTotalAmt} = useContext(ShopContext)
 
               <p className="text-sm text-gray-500">Quantity</p>
                 <p className="w-10 h-9 flex items-center justify-center border-x border-gray-300">
-                  {cartItem[e.id]}
+                  {cartdata.quantity}
                 </p>
             </div>
             {/* Total */}
             <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
                 <p className="text-sm text-gray-500">Total</p>
-                <p className="font-semibold">₹{e.new_price * cartItem[e.id]}</p>
+                <p className="font-semibold">₹{e.new_price * cartdata.quantity}</p>
 
             </div>
 
           </div>
         </div>
                     </React.Fragment>    
-                )}
+                )
             })}     
                      
         </div>
