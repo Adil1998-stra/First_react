@@ -17,7 +17,9 @@ router.post('/createuser',[
 ],async (req,res)=>{
 
     try {
-        const {name,email,password} = req.body;
+        const {name,password} = req.body;
+
+        const email = req.body.email.trim().toLowerCase()
 
         console.log(req.body)
         const errors = validationResult(req)
@@ -82,7 +84,8 @@ router.post('/login',[
         if (!errors.isEmpty()){
             return res.status(400).json({errors:errors.array() });
         }
-        const {email,password} = req.body;
+        const {password} = req.body;
+        const email = req.body.email.trim().toLowerCase();
 
         try {
             const userExist = await User.findOne({email})
